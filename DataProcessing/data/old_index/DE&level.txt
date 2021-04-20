@@ -1,0 +1,74 @@
+faultType DE_BO_7 驱动端滚动体故障_size7
+12k_Drive_End_B007_0_118.mat
+12k_Drive_End_B007_1_119.mat
+12k_Drive_End_B007_2_120.mat
+12k_Drive_End_B007_3_121.mat
+
+faultType DE_BO_14 驱动端滚动体故障_size14
+12k_Drive_End_B014_0_185.mat
+12k_Drive_End_B014_1_186.mat
+12k_Drive_End_B014_2_187.mat
+12k_Drive_End_B014_3_188.mat
+
+faultType DE_BO_21 驱动端滚动体故障_size21
+12k_Drive_End_B021_0_222.mat
+12k_Drive_End_B021_1_223.mat
+12k_Drive_End_B021_2_224.mat
+12k_Drive_End_B021_3_225.mat
+
+faultType DE_IR_7 驱动端内圈故障_size7
+12k_Drive_End_IR007_0_105.mat
+12k_Drive_End_IR007_1_106.mat
+12k_Drive_End_IR007_2_107.mat
+12k_Drive_End_IR007_3_108.mat
+
+faultType DE_IR_14 驱动端内圈故障_size14
+12k_Drive_End_IR014_0_169.mat
+12k_Drive_End_IR014_1_170.mat
+12k_Drive_End_IR014_2_171.mat
+12k_Drive_End_IR014_3_172.mat
+
+faultType DE_IR_21 驱动端内圈故障_size21
+12k_Drive_End_IR021_0_209.mat
+12k_Drive_End_IR021_1_210.mat
+12k_Drive_End_IR021_2_211.mat
+12k_Drive_End_IR021_3_212.mat
+
+faultType DE_OR_7 驱动端外圈故障_size7
+12k_Drive_End_OR007@3_0_144.mat
+12k_Drive_End_OR007@3_1_145.mat
+12k_Drive_End_OR007@3_2_146.mat
+12k_Drive_End_OR007@3_3_147.mat
+
+12k_Drive_End_OR007@6_0_130.mat
+12k_Drive_End_OR007@6_1_131.mat
+12k_Drive_End_OR007@6_2_132.mat
+12k_Drive_End_OR007@6_3_133.mat
+
+12k_Drive_End_OR007@12_0_156.mat
+12k_Drive_End_OR007@12_1_158.mat
+12k_Drive_End_OR007@12_2_159.mat
+12k_Drive_End_OR007@12_3_160.mat
+
+faultType DE_OR_14 驱动端外圈故障_size14
+12k_Drive_End_OR014@6_0_197.mat
+12k_Drive_End_OR014@6_1_198.mat
+12k_Drive_End_OR014@6_2_199.mat
+12k_Drive_End_OR014@6_3_200.mat
+
+
+faultType DE_OR_21 驱动端外圈故障_size21
+12k_Drive_End_OR021@3_0_246.mat
+12k_Drive_End_OR021@3_1_247.mat
+12k_Drive_End_OR021@3_2_248.mat
+12k_Drive_End_OR021@3_3_249.mat
+
+12k_Drive_End_OR021@6_0_234.mat
+12k_Drive_End_OR021@6_1_235.mat
+12k_Drive_End_OR021@6_2_236.mat
+12k_Drive_End_OR021@6_3_237.mat
+
+12k_Drive_End_OR021@12_0_258.mat
+12k_Drive_End_OR021@12_1_259.mat
+12k_Drive_End_OR021@12_2_260.mat
+12k_Drive_End_OR021@12_3_261.mat

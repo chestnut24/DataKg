@@ -1,0 +1,9 @@
+nodeID,name,type,describe
+0,FAULT,fault,故障列表
+1,DE_FAULT,fault,驱动端故障
+2,FE_FAULT,fault,风扇端故障
+3,DE_BO,fault,驱动端滚动体故障
+4,DE_IR,fault,驱动端内圈故障
+5,DE_OR,fault,驱动端外圈故障
+6,FE_IR,fault,风扇端内圈故障
+7,FE_OR,fault,风扇端外圈故障

@@ -1,0 +1,44 @@
+faultType FE_IR_7 风扇端内圈故障_size7
+12k_Fan_End_IR007_0_278.mat
+12k_Fan_End_IR007_1_279.mat
+12k_Fan_End_IR007_2_280.mat
+12k_Fan_End_IR007_3_281.mat
+
+faultType FE_IR_14 风扇端内圈故障_size14
+12k_Fan_End_IR014_0_274.mat
+12k_Fan_End_IR014_1_276.mat
+12k_Fan_End_IR014_2_276.mat
+12k_Fan_End_IR014_3_277.mat
+
+faultType FE_IR_21 风扇端内圈故障_size21
+12k_Fan_End_IR021_0_270.mat
+12k_Fan_End_IR021_1_271.mat
+12k_Fan_End_IR021_2_272.mat
+12k_Fan_End_IR021_3_273.mat
+
+faultType FE_OR_7 风扇端外圈故障_size7
+12k_Fan_End_OR007@12_0_302.mat
+12k_Fan_End_OR007@12_1_305.mat
+12k_Fan_End_OR007@12_2_306.mat
+12k_Fan_End_OR007@12_3_307.mat
+
+12k_Fan_End_OR007@3_0_298.mat
+12k_Fan_End_OR007@3_1_299.mat
+12k_Fan_End_OR007@3_2_300.mat
+12k_Fan_End_OR007@3_3_301.mat
+
+12k_Fan_End_OR007@6_0_294.mat
+12k_Fan_End_OR007@6_1_295.mat
+12k_Fan_End_OR007@6_2_296.mat
+12k_Fan_End_OR007@6_3_297.mat
+
+faultType FE_OR_14 风扇端外圈故障_size14
+12k_Fan_End_OR014@3_0_310.mat
+12k_Fan_End_OR014@3_1_309.mat
+12k_Fan_End_OR014@3_2_311.mat
+12k_Fan_End_OR014@3_3_312.mat
+
+faultType FE_OR_21 风扇端外圈故障_size21
+12k_Fan_End_OR021@3_1_316.mat
+12k_Fan_End_OR021@3_2_317.mat
+12k_Fan_End_OR021@3_3_318.mat

@@ -1,0 +1,136 @@
+# order_by: end   location  size  clock
+
+faultType DE_BO_size7 驱动端滚动体故障_深度7
+12k_Drive_End_B007_0_118.mat
+12k_Drive_End_B007_1_119.mat
+12k_Drive_End_B007_2_120.mat
+12k_Drive_End_B007_3_121.mat
+
+faultType DE_BO_size14 驱动端滚动体故障_深度14
+12k_Drive_End_B014_0_185.mat
+12k_Drive_End_B014_1_186.mat
+12k_Drive_End_B014_2_187.mat
+12k_Drive_End_B014_3_188.mat
+
+faultType DE_BO_size21 驱动端滚动体故障_深度21
+12k_Drive_End_B021_0_222.mat
+12k_Drive_End_B021_1_223.mat
+12k_Drive_End_B021_2_224.mat
+12k_Drive_End_B021_3_225.mat
+
+faultType DE_IR_size7 驱动端内圈故障_深度7
+12k_Drive_End_IR007_0_105.mat
+12k_Drive_End_IR007_1_106.mat
+12k_Drive_End_IR007_2_107.mat
+12k_Drive_End_IR007_3_108.mat
+
+faultType DE_IR_size14 驱动端内圈故障_深度14
+12k_Drive_End_IR014_0_169.mat
+12k_Drive_End_IR014_1_170.mat
+12k_Drive_End_IR014_2_171.mat
+12k_Drive_End_IR014_3_172.mat
+
+faultType DE_IR_size21 驱动端内圈故障_深度21
+12k_Drive_End_IR021_0_209.mat
+12k_Drive_End_IR021_1_210.mat
+12k_Drive_End_IR021_2_211.mat
+12k_Drive_End_IR021_3_212.mat
+
+faultType DE_OR_size7 驱动端外圈故障_深度7
+12k_Drive_End_OR007@3_0_144.mat
+12k_Drive_End_OR007@6_0_130.mat
+12k_Drive_End_OR007@12_0_156.mat
+12k_Drive_End_OR007@3_1_145.mat
+12k_Drive_End_OR007@6_1_131.mat
+12k_Drive_End_OR007@12_1_158.mat
+12k_Drive_End_OR007@3_2_146.mat
+12k_Drive_End_OR007@6_2_132.mat
+12k_Drive_End_OR007@12_2_159.mat
+12k_Drive_End_OR007@3_3_147.mat
+12k_Drive_End_OR007@6_3_133.mat
+12k_Drive_End_OR007@12_3_160.mat
+
+faultType DE_OR_size14 驱动端外圈故障_深度14
+12k_Drive_End_OR014@6_0_197.mat
+12k_Drive_End_OR014@6_1_198.mat
+12k_Drive_End_OR014@6_2_199.mat
+12k_Drive_End_OR014@6_3_200.mat
+
+
+faultType DE_OR_size21 驱动端外圈故障_深度21
+12k_Drive_End_OR021@3_0_246.mat
+12k_Drive_End_OR021@6_0_234.mat
+12k_Drive_End_OR021@12_0_258.mat
+12k_Drive_End_OR021@3_1_247.mat
+12k_Drive_End_OR021@6_1_235.mat
+12k_Drive_End_OR021@12_1_259.mat
+12k_Drive_End_OR021@3_2_248.mat
+12k_Drive_End_OR021@6_2_236.mat
+12k_Drive_End_OR021@12_2_260.mat
+12k_Drive_End_OR021@3_3_249.mat
+12k_Drive_End_OR021@6_3_237.mat
+12k_Drive_End_OR021@12_3_261.mat
+
+
+faultType FE_BO_size7 风扇端滚动体故障_深度7
+12k_Fan_End_B007_0_282.mat
+12k_Fan_End_B007_1_283.mat
+12k_Fan_End_B007_2_284.mat
+12k_Fan_End_B007_3_285.mat
+
+faultType FE_BO_size14 风扇端滚动体故障_深度14
+12k_Fan_End_B014_0_286.mat
+12k_Fan_End_B014_1_287.mat
+12k_Fan_End_B014_2_288.mat
+12k_Fan_End_B014_3_289.mat
+
+faultType FE_BO_size21 风扇端滚动体故障_深度21
+12k_Fan_End_B021_0_290.mat
+12k_Fan_End_B021_1_291.mat
+12k_Fan_End_B021_2_292.mat
+12k_Fan_End_B021_3_293.mat
+
+faultType FE_IR_size7 风扇端内圈故障_深度7
+12k_Fan_End_IR007_0_278.mat
+12k_Fan_End_IR007_1_279.mat
+12k_Fan_End_IR007_2_280.mat
+12k_Fan_End_IR007_3_281.mat
+
+faultType FE_IR_size14 风扇端内圈故障_深度14
+12k_Fan_End_IR014_0_274.mat
+12k_Fan_End_IR014_1_276.mat
+12k_Fan_End_IR014_2_276.mat
+12k_Fan_End_IR014_3_277.mat
+
+faultType FE_IR_size21 风扇端内圈故障_深度21
+12k_Fan_End_IR021_0_270.mat
+12k_Fan_End_IR021_1_271.mat
+12k_Fan_End_IR021_2_272.mat
+12k_Fan_End_IR021_3_273.mat
+
+faultType FE_OR_size7 风扇端外圈故障_深度7
+12k_Fan_End_OR007@3_0_298.mat
+12k_Fan_End_OR007@6_0_294.mat
+12k_Fan_End_OR007@12_0_302.mat
+12k_Fan_End_OR007@3_1_299.mat
+12k_Fan_End_OR007@6_1_295.mat
+12k_Fan_End_OR007@12_1_305.mat
+12k_Fan_End_OR007@3_2_300.mat
+12k_Fan_End_OR007@6_2_296.mat
+12k_Fan_End_OR007@12_2_306.mat
+12k_Fan_End_OR007@3_3_301.mat
+12k_Fan_End_OR007@6_3_297.mat
+12k_Fan_End_OR007@12_3_307.mat
+
+faultType FE_OR_size14 风扇端外圈故障_深度14
+12k_Fan_End_OR014@3_0_310.mat
+12k_Fan_End_OR014@3_1_309.mat
+12k_Fan_End_OR014@3_2_311.mat
+12k_Fan_End_OR014@3_3_312.mat
+12k_Fan_End_OR014@6_0_313.mat
+
+faultType FE_OR_size21 风扇端外圈故障_深度21
+12k_Fan_End_OR021@6_0_315.mat
+12k_Fan_End_OR021@3_1_316.mat
+12k_Fan_End_OR021@3_2_317.mat
+12k_Fan_End_OR021@3_3_318.mat

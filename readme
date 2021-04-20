@@ -1,0 +1,93 @@
+首先需要本地启动neo4j，并打开网页端
+注意：DataKg - neo4j_model 中的用户名及密码要与本地一致
+
+主要文件：
+主要分类文件 classification
+neo4j_model 用来保存对neo4j数据库的各种cypher操作，包括连接数据库，增删改查
+py2neo_connect 文件：用来测试连接并清空数据库
+py2neo_initialize 文件：用来初试化数据库，需要将文件提前放入neo4j的import文件中，注意：文件命名需和标签名一致
+py2neo_search  知识图谱的查询以及展示文件
+feature_extraction  提取轴承特征，并存到csv
+read&visualization  读文件并且可视化
+result_compare&show  结果对比并展示
+
+配置文件
+Tensorflow	1.14.0
+Keras	2.4.3
+Neo4j	community-3.3
+py2neo	4.0.0
+
+
+
+├─DataKg
+│  │  neo4j_model.py  知识图谱的指令集合模型
+│  │  py2neo_connect.py  用来测试连接和清空的文件
+│  │  py2neo_initialize.py  构建知识图谱的文件
+│  │  py2neo_initialize_loadFromCSV.py  已弃用，从csv导入数据，导入的数字带有''引号，因此查询时不能进行大小范围的查询
+│  │  py2neo_search.py  知识图谱的查询以及展示文件
+│  │
+│  └─__pycache__
+│          neo4j_model.cpython-37.pyc
+│          py2neo_search.cpython-37.pyc
+│
+├─DataProcessing
+│  ├─data  西储大学数据
+│  │  │  12k&DE&FE&level&15.txt  12k 有de有fe有level 共15个分类
+│  │  │  12kdata.txt  12k的数据清单
+│  │  │  21.txt  21个分类
+│  │  │  48kdata.txt  48k的数据清单
+│  │  │  83.txt  83个分类
+│  │  │  DE&level.txt  驱动+level
+│  │  │  FE&level.txt  风扇+level
+│  │  │  predict3_50CuDNNLSTM_Dropout_4times.h5
+│  │  │  数据简介.txt
+│  │  │
+│  │  ├─CaseWesternReserveUniversityData
+│  │  │
+│  │  └─__MACOSX
+│  │      └─CaseWesternReserveUniversityData
+│  │              ._.DS_Store
+│  │              ._CWRU数据说明.doc
+│  │
+│  └─LSTM_CWRU
+│      │  change_encode.py  改变文件编码
+│      │  classification.py  主要代码文件  混合LSTM分类模型
+│      │  feature_extraction.py  提取轴承特征，并存到csv
+│      │  read&visualization.py  读文件并且可视化
+│      │  result_compare&show.py  结果对比并展示
+│      │  updata_feature_csv.py  更新csv特征文件
+│      │
+│      ├─model_file  模型文件存贮
+│      │  │  classification_model.h5  分类模型文件
+│      │  │  matrix_result.png  混淆矩阵结果
+│      │  │  model_log.txt  分类准确率结果
+│      │  │  test.h5
+│      │  │  分类结果截图.docx
+│      │  │
+│      │  └─history_model  存储各个模型的准确率的结果
+│      │          cnn_attention_单层BiGRU.txt
+│      │          cnn_双层BiGRU_attention.txt
+│      │          cnn_双层BiLSTM_attention.txt
+│      │          单层LSTM.txt
+│      │
+│      ├─reference  写代码时的一些参考文件
+│      │      data_processing.py
+│      │      echarts.py  echarts展示图表还是很好看的
+│      │      jiao_classification.py
+│      │      normal_abnormal_data_plot.py
+│      │      normal_data_plot.py
+│      │      shi_cloud3d.py
+│      │      sql_data.py
+│      │      sun_test.py
+│
+└─import  导入知识图谱的csv文件
+    │  belongs.csv
+    │  change_encode.exe
+    │  fault.csv
+    │  feature.csv
+    │
+    └─15  15分类时候的csv文件
+            belongs.csv
+            fault.csv
+            feature.csv
+
