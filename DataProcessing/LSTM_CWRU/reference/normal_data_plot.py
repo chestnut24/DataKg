@@ -27,17 +27,19 @@ def get_driver_end_data(filename, point_number=10000):
     return data[key].flatten()[:point_number]  # 变成一维数组
 
 
-point_number = 500
+# point_number = 500
+point_number = 1000
 
-filenames = ['normal_0_97', 'normal_1_98', 'normal_2_99', 'normal_3_100']
+# filenames = ['normal_0_97', 'normal_1_98', 'normal_2_99', 'normal_3_100']
+filenames = ['normal_3_100']
 driver_end_data = map(lambda filename: get_driver_end_data(filename, point_number), filenames)
 
 x = range(point_number)
 print("x:", x)
 plt.figure()
 for index, data in enumerate(driver_end_data):
-    plt.subplot(4, 1, index + 1)
-    plt.plot(x, data)
+    plt.subplot(1, 1, index + 1)
+    plt.plot(x, data, color='#409eff')
     # plt.title(filenames[index])
     # print("1")
     # plt.boxplot(data)

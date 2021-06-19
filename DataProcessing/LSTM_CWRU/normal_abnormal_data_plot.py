@@ -48,12 +48,13 @@ driver_end_data = list(map(lambda filename: get_driver_end_data(filename, point_
 x = range(point_number)
 # %%
 
-# fault_list = ['正常', '滚动体故障', '内圈故障', '外圈故障']
-fault_list = ['Normal', 'Ball Fault', 'Inner Raceway Fault', 'Out Raceway Fault']
+fault_list = ['正常', '滚动体故障', '内圈故障', '外圈故障']
+# fault_list = ['Normal', 'Ball Fault', 'Inner Raceway Fault', 'Out Raceway Fault']
 color_list = ['dodgerblue', 'red', 'lightcoral', 'mediumslateblue']
 
 fig = plt.figure()
 fig.tight_layout()
+# fig.set_size_inches(6, 8)
 
 for index, data in enumerate(driver_end_data):
     plt.subplot(len(driver_end_data), 1, index + 1)
@@ -82,10 +83,15 @@ plt.plot(x, driver_end_data[3], color='palegoldenrod')
 # plt.title(u'Outer Raceway Fault')
 plt.title(u'外圈故障')
 '''
+savePath = r'./model_file/result_picture/normal_abnormal_data_plot.png'
+# plt.ylabel('Acceleration')
+# plt.xlabel('Time Step')
+plt.ylabel('加速度')
+plt.xlabel('时间步长')
 
-plt.ylabel('Acceleration')
-plt.xlabel('Time Step')
-
+plt.tight_layout()  # 调整画布大小防止子图重叠
+# plt.figure(figsize=(16, 12))  # 调整画布大小防止子图重叠
+plt.savefig(savePath, bbox_inches='tight')  # 后面那句话是让保存的图片变得紧凑
 plt.show()
 
 # %%
