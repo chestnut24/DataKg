@@ -59,8 +59,8 @@ def plot_accuracy(history, nameList, savePath, title):
         # plt.plot(x, acc_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
 
         # 曲线图 11111 使用
-        plt.plot(item['acc'])
-        plt.plot(item['val_acc'])
+        plt.plot(item['acc'],  ls=type_list[0], color=color_list[0])
+        plt.plot(item['val_acc'], ls=type_list[1], color=color_list[1])
 
     # CNN-Att-BiGRU
     # 英文图例 准确率
@@ -95,8 +95,8 @@ def plot_loss(history, nameList, savePath, title):
 
 
         # 曲线图 11111 使用
-        plt.plot(item['loss'])
-        plt.plot(item['val_loss'])
+        plt.plot(item['loss'],  ls=type_list[0], color=color_list[0])
+        plt.plot(item['val_loss'], ls=type_list[1], color=color_list[1])
     # plt.plot(history['val_loss'])
 
     # 英文
