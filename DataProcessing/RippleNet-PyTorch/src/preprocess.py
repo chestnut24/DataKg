@@ -1,9 +1,10 @@
+# 数据处理，这是第一个要运行的，要区别处理book 还是 movie还是kg
 import argparse
 import numpy as np
 
-RATING_FILE_NAME = dict({'movie': 'ratings.dat', 'book': 'BX-Book-Ratings.csv', 'news': 'ratings.txt'})
-SEP = dict({'movie': '::', 'book': ';', 'news': '\t'})
-THRESHOLD = dict({'movie': 4, 'book': 0, 'news': 0})
+RATING_FILE_NAME = dict({'movie': 'ratings.dat', 'book': 'BX-Book-Ratings.csv', 'news': 'ratings.txt', 'kgData': 'BX-Book-Ratings.csv'})
+SEP = dict({'movie': '::', 'book': ';', 'news': '\t', 'kgData': ';'})
+THRESHOLD = dict({'movie': 4, 'book': 0, 'news': 0, 'kgData': 0})
 
 
 def read_item_index_to_entity_id_file():
@@ -19,6 +20,8 @@ def read_item_index_to_entity_id_file():
 
 
 def convert_rating():
+    print(DATASET)
+    print(RATING_FILE_NAME[DATASET])
     file = '../data/' + DATASET + '/' + RATING_FILE_NAME[DATASET]
 
     print('reading rating file ...')
@@ -30,7 +33,7 @@ def convert_rating():
         array = line.strip().split(SEP[DATASET])
 
         # remove prefix and suffix quotation marks for BX dataset
-        if DATASET == 'book':
+        if DATASET == 'book' or DATASET == 'kgData':
             array = list(map(lambda x: x[1:-1], array))
 
         item_index_old = array[1]
@@ -59,7 +62,6 @@ def convert_rating():
             user_index_old2new[user_index_old] = user_cnt
             user_cnt += 1
         user_index = user_index_old2new[user_index_old]
-
         for item in pos_item_set:
             writer.write('%d\t%d\t1\n' % (user_index, item))
         unwatched_set = item_set - pos_item_set
@@ -83,6 +85,8 @@ def convert_kg():
     if DATASET == 'movie':
         files.append(open('../data/' + DATASET + '/kg_part1_rehashed.txt', encoding='utf-8'))
         files.append(open('../data/' + DATASET + '/kg_part2_rehashed.txt', encoding='utf-8'))
+    elif DATASET == 'book':
+        files.append(open('../data/' + DATASET + '/kg_rehashed.txt', encoding='utf-8'))
     else:
         files.append(open('../data/' + DATASET + '/kg_rehashed.txt', encoding='utf-8'))
 
@@ -93,9 +97,11 @@ def convert_kg():
             relation_old = array[1]
             tail_old = array[2]
 
-            if head_old not in entity_id2index:
+            if head_old not in entity_id2index:\
+                # origin code
                 entity_id2index[head_old] = entity_cnt
                 entity_cnt += 1
+                # continue
             head = entity_id2index[head_old]
 
             if tail_old not in entity_id2index:
@@ -119,7 +125,7 @@ if __name__ == '__main__':
     np.random.seed(555)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--dataset', type=str, default='movie', help='which dataset to preprocess')
+    parser.add_argument('-d', '--dataset', type=str, default='book', help='which dataset to preprocess')
     args = parser.parse_args()
     DATASET = args.dataset
 

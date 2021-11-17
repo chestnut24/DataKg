@@ -1,0 +1,22 @@
+load_data生成的输入
+
+评分的数据：[user,item,rating]
+train_data：(452253, 3)
+eval_data：(150740, 3)
+test_data：(150737, 3)
+
+user_history_dict：用户的历史点击记录，用户id:[物品id]
+长度6030
+格式：{1587: [0, 2048, 2312, 778, 780, 785, 791, 1944, 1442, 803, 2090, 2259, 1880, 857, 474, 739, 1763, 2151, 764],  ...... }
+
+n_entity：182011
+n_relation：12
+kg：dict类型，键值为头实体id，头实体id:[(尾实体id，关系id)]，数据为90370条
+格式为{87661: [(3373, 9), (88042, 8), (87660, 7), (2450, 2), (2477, 6), (4888, 3)],  ......}
+
+ripple_set：
+长度6030，根据用户历史点击生成的水波集，dict类型
+键值为用户id，每一个ripple_set[user]包括与该用户关联的三元组，其h、r、t分别保存在
+memories_h[ h ]	memories_r[ r ]	memories_t[ t ]
+ripple_set{[user]:[([memories_h][memories_r][memories_t]),([memories_h][memories_r][memories_t])], ......}
+根据水波模型扩散原理，会将多轮水波生成的结果（[memories_h][memories_r][memories_t]）加入[user]中，超参有几层水波n_hop就会拼接几次
