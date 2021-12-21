@@ -89,12 +89,14 @@ import matplotlib.pyplot as plt
 
 import h5py as h5
 
-file_to_read1 = h5.File('h5test.h5', 'r')
+# file_to_read1 = h5.File('h5test.h5', 'r')
 file_to_read2 = h5.File('result.h5', 'r')
+# file_to_read2 = h5.File('rfi-gan2.h5', 'r')
+file_to_read1 = h5.File('TEST_MP_PXX_20180530_063000.h5', 'r')
 
-tod1 = file_to_read1['P/Phase1'].value
-rfi2 = file_to_read1['RFI/Phase0'].value  # 原h5
-rfi3 = file_to_read2['01/predict'].value
+tod1 = file_to_read1['P/Phase1'][()]
+rfi2 = file_to_read1['RFI/Phase0'][()]  # 原h5
+rfi3 = file_to_read2['01/predict'][()]
 
 tod1 = tod1[0:256, 0:128]
 rfi2 = rfi2[0:256, 0:128]
@@ -120,8 +122,8 @@ plt.subplot(133)
 plt.xlabel("SumThreshold Label")
 plt.imshow(np.squeeze(rfi3), extent=(640, 768, 990, 1260),cmap="gist_earth")
 
-# plt.show()
-plt.savefig('threePic.png')
+plt.show()
+# plt.savefig('threePic.png')
 
 
 

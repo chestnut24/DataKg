@@ -46,21 +46,21 @@ def plot_accuracy(history, nameList, savePath, title):
 
     for index, item in enumerate(history):
         # 折线图 2222和3333 使用
-        # acc_choose = []  # 从中挑选出十个点
-        # x = []  # x轴坐标值
-        # print('acc:', item['val_acc'])
-        # for i in range(0, 70, step):  # 为4时效果看起来最好
-        #     acc_choose.append(item['val_acc'][i])
-        #     x.append(i)
-        # # print(acc_choose)
-        # # for i in x:  # 曲线上加数字
-        # #     # print(acc_choose[int(i / 5)])
-        # #     plt.text(i, acc_choose[int(i / step)] + 0.01, '%.4f' % acc_choose[int(i / step)], ha='center', va='bottom', fontsize=9)
-        # plt.plot(x, acc_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
+        acc_choose = []  # 从中挑选出十个点
+        x = []  # x轴坐标值
+        print('acc:', item['val_acc'])
+        for i in range(0, 70, step):  # 为4时效果看起来最好
+            acc_choose.append(item['val_acc'][i])
+            x.append(i)
+        # print(acc_choose)
+        # for i in x:  # 曲线上加数字
+        #     # print(acc_choose[int(i / 5)])
+        #     plt.text(i, acc_choose[int(i / step)] + 0.01, '%.4f' % acc_choose[int(i / step)], ha='center', va='bottom', fontsize=9)
+        plt.plot(x, acc_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
 
         # 曲线图 11111 使用
-        plt.plot(item['acc'],  ls=type_list[0], color=color_list[0])
-        plt.plot(item['val_acc'], ls=type_list[1], color=color_list[1])
+        # plt.plot(item['acc'],  ls=type_list[0], color=color_list[0])
+        # plt.plot(item['val_acc'], ls=type_list[1], color=color_list[1])
 
     # CNN-Att-BiGRU
     # 英文图例 准确率
@@ -85,18 +85,18 @@ def plot_loss(history, nameList, savePath, title):
     for index, item in enumerate(history):
         step = 4
         # 折线图 2222和3333 使用
-        # loss_choose = []  # 从中挑选出十个点
-        # x = []  # x轴坐标值
-        # print('loss:', item['val_loss'])
-        # for i in range(0, 70, step):
-        #     loss_choose.append(item['val_loss'][i])
-        #     x.append(i)
-        # plt.plot(x, loss_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
+        loss_choose = []  # 从中挑选出十个点
+        x = []  # x轴坐标值
+        print('loss:', item['val_loss'])
+        for i in range(0, 70, step):
+            loss_choose.append(item['val_loss'][i])
+            x.append(i)
+        plt.plot(x, loss_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
 
 
         # 曲线图 11111 使用
-        plt.plot(item['loss'],  ls=type_list[0], color=color_list[0])
-        plt.plot(item['val_loss'], ls=type_list[1], color=color_list[1])
+        # plt.plot(item['loss'],  ls=type_list[0], color=color_list[0])
+        # plt.plot(item['val_loss'], ls=type_list[1], color=color_list[1])
     # plt.plot(history['val_loss'])
 
     # 英文
@@ -132,7 +132,7 @@ def explore_filename(dir):  # 获取目录下所有文件名
         for file in files:
             filename.append(file[:-4])
     return filename
-
+'''
 # 111111111
 filepath = r'./model_file/history_model_97kinds_70epochs/OBiLSTM.txt'  # 97分类 OBiLSTM 标签 OBiLSTM  单个文件!!!!
 
@@ -150,12 +150,14 @@ accTitle = 'OBiLSTM模型准确率'
 lossTitle = 'OBiLSTM模型loss'
 plot_accuracy(history, nameList, accSavePath, accTitle)
 plot_loss(history, nameList, lossSavePath, lossTitle)
-
 '''
+
+
 # 222222222
 # 遍历文件夹所有文件进行展示  多个不同分类方法展示
 pathList = []
-filepath = r'./model_file/result_model_by_lstm'  # 5种分类方法 LSTM 标签 LSTM
+filepath = r'./model_file/ablation_study'  # 消融实验
+# filepath = r'./model_file/result_model_by_lstm'  # 5种分类方法 LSTM 标签 LSTM
 # filepath = r'./model_file/result_model_by_proLSTM'  # 5种分类方法 OBiLSTM 标签 OBiLSTM
 # filepath = r'./model_file/70epoch'
 
@@ -164,7 +166,8 @@ nameList = explore_filename(filepath)
 for name in nameList:
     pathList.append(filepath + '/' + name + '.txt')
 # 现在多加上一个自定义的nameList
-nameList = ['端_2分类', '端_位置_6分类', '端_位置_深度_18分类', '端_位置_深度_负载_72分类', '端_位置_深度_负载_点钟_97分类', ]
+# nameList = ['端_2分类', '端_位置_6分类', '端_位置_深度_18分类', '端_位置_深度_负载_72分类', '端_位置_深度_负载_点钟_97分类', ]
+nameList = ['all', 'no_attention', 'no_BiLSTM1', 'no_BiLSTM2', 'no_CNN', ]
 
 # 整个文件夹遍历
 history = []
@@ -176,10 +179,10 @@ for path in pathList:
 # plot_accuracy()
 
 # LSTM的五种分类方法 下的 acc 和 loss
-accSavePath = r'./model_file/result_picture/lstm_70epochs_4kinds_acc_cn.png'
-lossSavePath = r'./model_file/result_picture/lstm_70epochs_4kinds_loss_cn.png'
-accTitle = 'LSTM模型多种故障数准确率'
-lossTitle = 'LSTM模型多种故障数loss'
+accSavePath = r'./model_file/result_picture/as_acc_cn.png'
+lossSavePath = r'./model_file/result_picture/as_loss_cn.png'
+accTitle = '各模型准确率acc'
+lossTitle = '各模型损失loss'
 
 # OBiLSTM的五种分类方法 下的 acc 和 loss
 # accSavePath = r'./model_file/result_picture/OBiLSTM_70epochs_4kinds_acc_cn.png'
@@ -190,7 +193,7 @@ plot_accuracy(history, nameList, accSavePath, accTitle)
 plot_loss(history, nameList, lossSavePath, lossTitle)
 
 
-
+'''
 # 333333333
 # 97类分类方法，不同模型对比展示
 # 指定地址进行展示 展示97种分类 70轮 三种不同模型

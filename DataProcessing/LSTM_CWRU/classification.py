@@ -270,6 +270,7 @@ def model_build(FEATURE_NUM):  # 模型构建层
 
 
 # 完整版 CNN-Att-BiLSTM
+    '''
     input = Input(shape=(TIMESERIES_LENGTH, 3))  # 1. 输入shape
     conv1 = Conv1D(filters=16, kernel_size=10, activation='relu')(input)  # 2. for input1  主要用的卷积层
     LSTM1 = Bidirectional(LSTM(30, return_sequences=True, input_shape=(TIMESERIES_LENGTH, 3)), merge_mode='concat')(conv1)  # 3. 第一层双向GRU
@@ -282,35 +283,34 @@ def model_build(FEATURE_NUM):  # 模型构建层
     '''
 
     input = Input(shape=(TIMESERIES_LENGTH, 3))  # 1. 输入shape
-    # BiGRU1 = LSTM(30, input_shape=(TIMESERIES_LENGTH, 3))(input)  # 单层LSTM
     # conv1 = Conv1D(filters=48, kernel_size=6, strides=1, activation='relu')(input)  # for input1
 
     # conv1 = Conv1D(filters=16, kernel_size=10, activation='relu')(input)  # 2. for input1  主要用的卷积层
 
+    # lstm1 = LSTM(30, return_sequences=True, input_shape=(TIMESERIES_LENGTH, 3))(conv1)  # 单层LSTM
     # attention_mul = attention_3d_block(conv1)
 
-    # BiLSTM1 = Bidirectional(LSTM(30, return_sequences=True, input_shape=(TIMESERIES_LENGTH, 3)), merge_mode='concat')(
-    #     input)  # 3. 第一层双向LSTM
+    BiLSTM1 = Bidirectional(LSTM(30, return_sequences=True, input_shape=(TIMESERIES_LENGTH, 3)), merge_mode='concat')(input)  # 3. 第一层双向LSTM
     # BiLSTM1 = Bidirectional(LSTM(30, return_sequences=True, input_shape=(TIMESERIES_LENGTH, 3)), merge_mode='concat')(
     #     conv1)  # 第一层双向LSTM
 
-    # attention_mul = attention_3d_block(conv1)  # 6. 注意力机制
-    BiLSTM1 = LSTM(30, input_shape=(TIMESERIES_LENGTH, 3))(input)  # 单层LSTM
-    # BiLSTM1 = Bidirectional(LSTM(30, input_shape=(TIMESERIES_LENGTH, 3)), merge_mode='concat')(attention_mul)  # 单层双向GRU
+    # attention_mul = attention_3d_block(BiLSTM1)  # 6. 注意力机制
+    # LSTM1 = LSTM(30, input_shape=(TIMESERIES_LENGTH, 3))(attention_mul)  # 单层LSTM
+    # BiLSTM2 = Bidirectional(LSTM(30, input_shape=(TIMESERIES_LENGTH, 3)), merge_mode='concat')(attention_mul)  # 单层双向GRU
     # BiGRU1 = LSTM(30, input_shape=(TIMESERIES_LENGTH, 3))(input)  # 单层LSTM
+    # conv2 = Conv1D(filters=16, kernel_size=10, activation='relu')(attention_mul)
     NormalOut = BatchNormalization()(BiLSTM1)  # 4. 正则化，防止过拟合
     DropOut = Dropout(0.2)(NormalOut)  # 5. dropout，防止过拟合
-    
 
-    # attention_mul = attention_3d_block(DropOut)  # 6. 注意力机制
+    attention_mul = attention_3d_block(DropOut)  # 6. 注意力机制
 
     # # BiGRU2 = Bidirectional(GRU(30))(attention_mul)  # 7. 第二层双向GRU
-    # BiLSTM12 = Bidirectional(LSTM(30))(attention_mul)  # 第二层双向LSTM
+    BiLSTM12 = Bidirectional(LSTM(30))(attention_mul)  # 第二层双向LSTM
     # # LSTMOut = LSTM(30, input_shape=(TIMESERIES_LENGTH, 3))(conv1)
     # NormalOut = BatchNormalization()(BiLSTM12)  # 8. 正则化，防止过拟合
-    # # NormalOut = BatchNormalization()(BiGRU1)  # 正则化，防止过拟合
-    # DropOut = Dropout(0.2)(NormalOut)  # 9. dropout，防止过拟合
-    '''
+    NormalOut = BatchNormalization()(BiLSTM12)  # 正则化，防止过拟合
+    DropOut = Dropout(0.2)(NormalOut)  # 9. dropout，防止过拟合
+
 
 
 # 分界线
@@ -345,7 +345,8 @@ def model_fit(model, x_train, y_train, file):
 
     # 以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。
     # with open('./model_file/model_log.txtodel_log.txt', 'wb') as file_pi:
-    with open('./model_file/model_result_log/' + file, 'wb') as file_pi:
+    # with open('./model_file/model_result_log/' + file, 'wb') as file_pi:
+    with open('./model_file/ablation_study/' + file, 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
 
     # plot_accuracy()
@@ -414,8 +415,11 @@ filepath = r"../data/train_data_index"  # 指定训练集路径
 filename = explore_filename(filepath)
 for file in filename:
     X_train, X_test, Y_train, Y_test, FEATURE_NUM = data_processing(filepath + '/' + file)  # 数据处理 FEATURE_NUM是故障数量
-    model = model_build(FEATURE_NUM)  # 模型构建
-    model_fit(model, X_train, Y_train, file)  # 模型训练
+    print('X_test', X_test)
+    print('Y_test', Y_test)
+    # model = model_build(FEATURE_NUM)  # 模型构建
+    # model_fit(model, X_train, Y_train, file)  # 模型训练原
+    # model_fit(model, X_train, Y_train, 'no_cnn')  # 模型训练单独
     model_test(X_test, Y_test)  # 模型测试
 
 # X_train, X_test, Y_train, Y_test = data_processing()  # 数据处理
