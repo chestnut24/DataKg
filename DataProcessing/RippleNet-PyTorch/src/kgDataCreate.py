@@ -86,6 +86,7 @@ def rating_model2(Smax):  # model2 权值不等
             a = a1 + i * diff  # 计算通项
             paraArr.append(a)
     # 根据错误频率[1, 68, 192, 1851, 113] 改为 [3, 2.5, 1.5, 1, 2]
+    paraArr = [3, 2.5, 1.5, 1, 2]
     for i in range(listLen):
         for j in range(listLen):
             if nameList[i] != nameList[j]:  # 不为同一个节点时才进行打分
@@ -101,7 +102,7 @@ def rating_model2(Smax):  # model2 权值不等
                 # ratings构造要求 第一项为 节点1的id 第二项为 节点2的name 第三项为节点1和节点2的相似度
                 # ratingList.append('"%s";"%s";"%.1f"\n' % (idList[i], nameList[j], SimScore))
                 ratingList.append('"%s";"%s";"%d"\n' % (idList[i], nameList[j], SimScore))
-                myRatingList.append('%s %s %1.f\n' % (nameList[i], nameList[j], SimScore))
+                myRatingList.append('%s %s %.1f\n' % (nameList[i], nameList[j], SimScore))
 
 
 def judgeDiff(name1, name2):  # 用来判断两个节点是否相同，返回一个数组，前几项为不同项的下标，最后一项为层级差
@@ -179,4 +180,6 @@ print('rating file done')
 writer = open(myRatingPath, 'w', encoding='utf-8')
 for item in myRatingList:
     writer.write(item)
+    # if random.random() > 0.58:  # 随机筛选加入的评分，剩下一半不评分用于做空白训练集
+    #     writer.write(item)
 print('my rating file done')
