@@ -81,7 +81,7 @@ def data_processing(path):
         # 输出loading data 同时format是格式化函数，能将括号中的三个filename等代替前方的 {0} 等
 
         # ！！！！！！！！！！！！！！！！
-        print('Loading data {0} {1} {2}'.format(filename, fault_type, description))  # 暂时注释
+        # print('Loading data {0} {1} {2}'.format(filename, fault_type, description))  # 暂时注释
 
         # 此时的filename长这样 12k_Drive_End_B007_0_118  以_进行分割放入params列表（或者叫数组）
         params = filename.split('_')
@@ -392,10 +392,23 @@ def model_test(x_test, y_test):
     # y_pred = y_data.argmax(axis=1)
     y_pred = final_model.predict(x_test).argmax(axis=1)
     print(y_pred)
+    '''
+    # 用于输出pred和test进行对比
+    my_test = '\n'.join(str(i) for i in y_test)
+    writer = open('./model_file/result_pred/y_test.txt', 'w', encoding='utf-8')
+    writer.write(my_test)
+    writer.close()
+
+    my_pred = '\n'.join(str(i) for i in y_pred)
+    writer = open('./model_file/result_pred/y_pred.txt', 'w', encoding='utf-8')
+    writer.write(my_pred)
+    writer.close()
+    '''
     print(y_pred.shape)
 
-    test_loss, test_acc = final_model.evaluate(x_test, y_test)
-    print('识别准确度为：', test_acc)
+
+    # test_loss, test_acc = final_model.evaluate(x_test, y_test)
+    # print('识别准确度为：', test_acc)
 
 
 def explore_filename(dir):  # 获取目录下所有文件名

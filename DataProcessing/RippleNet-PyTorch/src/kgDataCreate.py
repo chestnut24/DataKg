@@ -76,7 +76,8 @@ def rating_model2(Smax):  # model2 权值不等
     avg = Smax / n  # 平均权值为 总值/特征数
     LevelScore = avg
     diff = -1 * Smax / (n * (n - 1))  # 本文是 -10/(4*5)=-0.5 另外注意diff是正负值，本文采用降序，则diff为-0.5
-    paraArr = []  # 权重参数列表，本文是 [3, 2.5, 2, 1.5, 1]
+    paraArr = []  # 权重参数列表，本文原本是 [3, 2.5, 2, 1.5, 1]
+    # 根据错误频率[1, 68, 192, 1851, 113] 改为 [3, 2.5, 1.5, 1, 2]
     a1 = Smax / n - (n - 1) * diff / 2  # 计算首项
     for i in range(n):
         if i == 0:
@@ -84,6 +85,7 @@ def rating_model2(Smax):  # model2 权值不等
         else:
             a = a1 + i * diff  # 计算通项
             paraArr.append(a)
+    # 根据错误频率[1, 68, 192, 1851, 113] 改为 [3, 2.5, 1.5, 1, 2]
     for i in range(listLen):
         for j in range(listLen):
             if nameList[i] != nameList[j]:  # 不为同一个节点时才进行打分
@@ -99,6 +101,7 @@ def rating_model2(Smax):  # model2 权值不等
                 # ratings构造要求 第一项为 节点1的id 第二项为 节点2的name 第三项为节点1和节点2的相似度
                 # ratingList.append('"%s";"%s";"%.1f"\n' % (idList[i], nameList[j], SimScore))
                 ratingList.append('"%s";"%s";"%d"\n' % (idList[i], nameList[j], SimScore))
+                myRatingList.append('%s %s %1.f\n' % (nameList[i], nameList[j], SimScore))
 
 
 def judgeDiff(name1, name2):  # 用来判断两个节点是否相同，返回一个数组，前几项为不同项的下标，最后一项为层级差
@@ -130,12 +133,14 @@ feature_list = [
 idPath = '../data/kgData/item_index2entity_id_rehashed.txt'
 kgPath = '../data/kgData/kg_rehashed.txt'
 ratingPath = '../data/kgData/ratings.txt'
+myRatingPath = '../data/kgData/myRatings.txt'
 # print(feature_list)
 result = []  # 保存故障节点名称+id
 nameList = []
 idList = []
 kgList = []
 ratingList = []
+myRatingList = []
 fe_len = len(feature)
 
 # 1. 构建故障节点及id，并写入 idPath 路径下的文件中
@@ -170,3 +175,8 @@ for item in ratingList:
     if random.random() > 0.58:  # 随机筛选加入的评分，剩下一半不评分用于做空白训练集
         writer.write(item)
 print('rating file done')
+
+writer = open(myRatingPath, 'w', encoding='utf-8')
+for item in myRatingList:
+    writer.write(item)
+print('my rating file done')
