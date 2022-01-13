@@ -6,6 +6,7 @@ class Neo4j_Operate:
     graph = None
     matcher = None
 
+
     def _init_(self):
         print("Neo4j Init...")
 

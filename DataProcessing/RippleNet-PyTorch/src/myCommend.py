@@ -74,6 +74,7 @@ diff_len = len(fault_list)
 print('diff_len', diff_len)
 print('k_res', k_res)
 print('k_add', k_add)
+diff_len = diff_len - 128
 for i in range(k_num):
     c = k_add[i] / diff_len
     print('k为%d时：%.4f\t' % (i + 1, c))

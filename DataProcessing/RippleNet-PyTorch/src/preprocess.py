@@ -4,7 +4,7 @@ import numpy as np
 
 RATING_FILE_NAME = dict({'movie': 'ratings.dat', 'book': 'BX-Book-Ratings.csv', 'news': 'ratings.txt', 'kgData': 'ratings.txt'})
 SEP = dict({'movie': '::', 'book': ';', 'news': '\t', 'kgData': ';'})
-THRESHOLD = dict({'movie': 4, 'book': 0, 'news': 0, 'kgData': 4})
+THRESHOLD = dict({'movie': 4, 'book': 0, 'news': 0, 'kgData': 6})
 
 
 def read_item_index_to_entity_id_file():

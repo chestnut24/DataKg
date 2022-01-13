@@ -173,13 +173,13 @@ createRating(2, 10)  # 参数为model和总分数
 # print(ratingList)
 writer = open(ratingPath, 'w', encoding='utf-8')
 for item in ratingList:
-    if random.random() > 0.58:  # 随机筛选加入的评分，剩下一半不评分用于做空白训练集
+    if random.random() > 0.4:  # 随机筛选加入的评分，剩下一半不评分用于做空白训练集
         writer.write(item)
 print('rating file done')
 
 writer = open(myRatingPath, 'w', encoding='utf-8')
 for item in myRatingList:
-    writer.write(item)
-    # if random.random() > 0.58:  # 随机筛选加入的评分，剩下一半不评分用于做空白训练集
-    #     writer.write(item)
+    # writer.write(item)
+    if random.random() > 0.0:
+        writer.write(item)
 print('my rating file done')

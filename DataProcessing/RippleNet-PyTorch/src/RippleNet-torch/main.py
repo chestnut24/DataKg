@@ -6,7 +6,7 @@ from train import train
 np.random.seed(555)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', type=str, default='kgDataModel1', help='which dataset to use')
+parser.add_argument('--dataset', type=str, default='kgData', help='which dataset to use')
 parser.add_argument('--dim', type=int, default=16, help='dimension of entity and relation embeddings')
 parser.add_argument('--n_hop', type=int, default=2, help='maximum hops')
 parser.add_argument('--kge_weight', type=float, default=0.01, help='weight2 of the KGE term')
