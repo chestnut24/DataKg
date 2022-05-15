@@ -1,0 +1,7 @@
+name,type,describe
+风扇端_滚动体,fault_level_2,风扇端_滚动体
+风扇端_内圈,fault_level_2,风扇端_内圈
+风扇端_外圈,fault_level_2,风扇端_外圈
+驱动端_滚动体,fault_level_2,驱动端_滚动体
+驱动端_内圈,fault_level_2,驱动端_内圈
+驱动端_外圈,fault_level_2,驱动端_外圈

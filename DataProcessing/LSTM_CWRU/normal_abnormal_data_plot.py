@@ -6,7 +6,7 @@ Author: zhsh
 import scipy.io as sio
 import numpy as np
 import matplotlib.pyplot as plt
-from PyEMD import EMD, Visualisation
+# from PyEMD import EMD, Visualisation
 import pandas
 # 支持中文
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签

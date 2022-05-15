@@ -9,7 +9,7 @@ from matplotlib.pyplot import MultipleLocator
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
-color_list = ['red', 'cyan', 'lime', 'mediumslateblue', 'lightcoral', 'lightcoral', 'palegoldenrod']  # 曲线颜色列表
+color_list = ['red', 'cyan', 'lime', 'mediumslateblue', 'lightcoral', 'palegoldenrod', 'palegoldenrod']  # 曲线颜色列表
 bot_list = ['s', 'o', '^', 'x', '*', 's']  # 点形状列表
 type_list = ['-', '--', '-.', ':', '--', '-', '-.']  # 折线形状列表
 
@@ -34,7 +34,7 @@ type_list = ['-', '--', '-.', ':', '--', '-', '-.']  # 折线形状列表
 # '', ' ', None
 
 
-def plot_accuracy(history, nameList, savePath, title):
+def plot_accuracy(history, nameList, savePath, title, isSingle):
     step = 4
 
     y_major_locator = MultipleLocator(0.1)
@@ -45,22 +45,34 @@ def plot_accuracy(history, nameList, savePath, title):
     # 把y轴的主刻度设置为0.1的倍数
 
     for index, item in enumerate(history):
-        # 折线图 2222和3333 使用
-        acc_choose = []  # 从中挑选出十个点
-        x = []  # x轴坐标值
-        print('acc:', item['val_acc'])
-        for i in range(0, 70, step):  # 为4时效果看起来最好
-            acc_choose.append(item['val_acc'][i])
-            x.append(i)
-        # print(acc_choose)
-        # for i in x:  # 曲线上加数字
-        #     # print(acc_choose[int(i / 5)])
-        #     plt.text(i, acc_choose[int(i / step)] + 0.01, '%.4f' % acc_choose[int(i / step)], ha='center', va='bottom', fontsize=9)
-        plt.plot(x, acc_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
+        flag = 0
+        for i in range(0, 70):
+            if item['val_acc'][i] > 0.9 and flag == 0:
+                flag = 1
+                print('index:', i)
+                print('value:', item['val_acc'][i])
+        if isSingle == False:  # 如果不是1111
+            # 折线图 2222和3333 使用
+            acc_choose = []  # 从中挑选出十个点
+            x = []  # x轴坐标值
+            print('acc:', item['val_acc'])
+            for i in range(0, 70, step):  # 为4时效果看起来最好
+                # acc_choose.append(item['val_acc'][i])  # 测试集
+                acc_choose.append(item['acc'][i])  # 训练集
+                x.append(i)
+            # print(acc_choose)
+            # for i in x:  # 曲线上加数字
+            #     # print(acc_choose[int(i / 5)])
+            #     plt.text(i, acc_choose[int(i / step)] + 0.01, '%.4f' % acc_choose[int(i / step)], ha='center', va='bottom', fontsize=9)
+            plt.plot(x, acc_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
 
-        # 曲线图 11111 使用
-        # plt.plot(item['acc'],  ls=type_list[0], color=color_list[0])
-        # plt.plot(item['val_acc'], ls=type_list[1], color=color_list[1])
+            # 折线图 直线图(非点图)
+            # plt.plot(item['acc'], ls=type_list[index], color=color_list[index])
+            # plt.plot(item['val_acc'], ls=type_list[index], color=color_list[index])
+        else:
+            # 曲线图 11111 使用
+            plt.plot(item['acc'],  ls=type_list[0], color=color_list[0])
+            plt.plot(item['val_acc'], ls=type_list[1], color=color_list[1])
 
     # CNN-Att-BiGRU
     # 英文图例 准确率
@@ -72,32 +84,32 @@ def plot_accuracy(history, nameList, savePath, title):
     # plt.title('Model Accuracy')
     plt.title(title)
     plt.ylabel('准确率')
-    plt.xlabel('训练代数')
-
+    plt.xlabel('迭代次数')
     # plt.legend(['train', 'verify'], loc='upper left')
     plt.legend(nameList, loc='lower right')
     plt.savefig(savePath, bbox_inches='tight')  # 后面那句话是让保存的图片变得紧凑
     plt.show()
 
 
-def plot_loss(history, nameList, savePath, title):
+def plot_loss(history, nameList, savePath, title, isSingle):
 # def plot_loss(history, nameList):
     for index, item in enumerate(history):
-        step = 4
-        # 折线图 2222和3333 使用
-        loss_choose = []  # 从中挑选出十个点
-        x = []  # x轴坐标值
-        print('loss:', item['val_loss'])
-        for i in range(0, 70, step):
-            loss_choose.append(item['val_loss'][i])
-            x.append(i)
-        plt.plot(x, loss_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
-
-
-        # 曲线图 11111 使用
-        # plt.plot(item['loss'],  ls=type_list[0], color=color_list[0])
-        # plt.plot(item['val_loss'], ls=type_list[1], color=color_list[1])
-    # plt.plot(history['val_loss'])
+        if isSingle == False:  # 如果不是1111
+            step = 4
+            # 折线图 2222和3333 使用
+            loss_choose = []  # 从中挑选出十个点
+            x = []  # x轴坐标值
+            print('loss:', item['val_loss'])
+            for i in range(0, 70, step):
+                # loss_choose.append(item['val_loss'][i])  # 测试集
+                loss_choose.append(item['loss'][i])  # 训练集
+                x.append(i)
+            plt.plot(x, loss_choose, marker=bot_list[index], ls=type_list[index], color=color_list[index])
+        else:
+            # 曲线图 11111 使用
+            plt.plot(item['loss'],  ls=type_list[0], color=color_list[0])
+            plt.plot(item['val_loss'], ls=type_list[1], color=color_list[1])
+        # plt.plot(history['val_loss'])
 
     # 英文
     # plt.title('Model loss')
@@ -106,7 +118,7 @@ def plot_loss(history, nameList, savePath, title):
     # 中文
     plt.title(title)
     plt.ylabel('Loss')
-    plt.xlabel('训练代数')
+    plt.xlabel('迭代次数')
     # plt.legend(['Train', 'Test'], loc='upper left')
     plt.legend(nameList, loc='upper right')  # legend是图例
     plt.savefig(savePath, bbox_inches='tight')  # 后面那句话是让保存的图片变得紧凑
@@ -148,8 +160,8 @@ accSavePath = r'./model_file/result_picture/OBiLSTM_70epochs_97kinds_acc_train&v
 lossSavePath = r'./model_file/result_picture/OBiLSTM_70epochs_97kinds_loss_train&verify.png'
 accTitle = 'OBiLSTM模型准确率'
 lossTitle = 'OBiLSTM模型loss'
-plot_accuracy(history, nameList, accSavePath, accTitle)
-plot_loss(history, nameList, lossSavePath, lossTitle)
+plot_accuracy(history, nameList, accSavePath, accTitle, True)
+plot_loss(history, nameList, lossSavePath, lossTitle, True)
 '''
 
 
@@ -167,7 +179,8 @@ for name in nameList:
     pathList.append(filepath + '/' + name + '.txt')
 # 现在多加上一个自定义的nameList
 # nameList = ['端_2分类', '端_位置_6分类', '端_位置_深度_18分类', '端_位置_深度_负载_72分类', '端_位置_深度_负载_点钟_97分类', ]
-nameList = ['all', 'no_attention', 'no_BiLSTM1', 'no_BiLSTM2', 'no_CNN', ]
+# nameList = ['OBiLSTM', '无CNN层', '无第一层BiLSTM', '无第二层BiLSTM', '无注意力机制', 'CNN+LSTM']
+nameList = ['OBiLSTM', '无CNN层', '无注意力机制', 'CNN+LSTM']
 
 # 整个文件夹遍历
 history = []
@@ -189,8 +202,8 @@ lossTitle = '各模型损失loss'
 # lossSavePath = r'./model_file/result_picture/OBiLSTM_70epochs_4kinds_loss_cn.png'
 # accTitle = 'OBiLSTM模型多种故障数准确率'
 # lossTitle = 'OBiLSTM模型多种故障数loss'
-plot_accuracy(history, nameList, accSavePath, accTitle)
-plot_loss(history, nameList, lossSavePath, lossTitle)
+plot_accuracy(history, nameList, accSavePath, accTitle, False)
+plot_loss(history, nameList, lossSavePath, lossTitle, False)
 
 
 '''
@@ -212,6 +225,6 @@ accSavePath = r'./model_file/result_picture/acc_70epochs_97_cn.png'  # 保存路
 lossSavePath = r'./model_file/result_picture/loss_70epochs_97_cn.png'
 accTitle = '模型准确率对比图'
 lossTitle = '模型loss对比图'
-plot_accuracy(history, nameList, accSavePath, accTitle)
-plot_loss(history, nameList, lossSavePath, lossTitle)
+plot_accuracy(history, nameList, accSavePath, accTitle, False)
+plot_loss(history, nameList, lossSavePath, lossTitle, False)
 '''

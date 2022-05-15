@@ -1,5 +1,5 @@
 # 读取文件并且可视化 可以是文件 也可以是SQL数据库 并且还有emd分解
-'''
+
 import pymysql
 import matplotlib.pyplot as plt
 from PyEMD import EMD, Visualisation
@@ -87,8 +87,8 @@ plt.show()
 # vis.plot_imfs(imfs=imfs, residue=res, t=t, include_residue=True)  # 绘制 IMF
 # vis.plot_instant_freq(t, imfs=imfs)  # 绘制并显示所有提供的IMF的瞬时频率
 # vis.show()
-'''
 
+'''
 # 读取指定目录文件，并进行可视化
 
 import pymysql
@@ -109,3 +109,4 @@ plt.plot(x, data[0], color='coral')
 plt.title('2019-08-26_080000')
 
 plt.show()
+'''
